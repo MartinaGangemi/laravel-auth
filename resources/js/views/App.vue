@@ -8,7 +8,7 @@
 
 
 export default ({
-   name:'root',
+   name:'app',
    components:{
 
    }
