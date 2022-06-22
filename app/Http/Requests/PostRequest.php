@@ -26,7 +26,7 @@ class PostRequest extends FormRequest
         return [
             'title' => 'required', 'max:150',
             'img' => 'required|url',
-            'content' => 'nullable',
+            'content' => 'required',
 
         ];
     }

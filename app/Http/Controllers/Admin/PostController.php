@@ -44,15 +44,14 @@ class PostController extends Controller
         //dd($request->all());
 
         $validated_data = $request->validated();
-
-        $post = new Post();
-        $post->title = $request->title;
-        $post->content = $request->content;
-        $post->img = $request->img;
+        $slug = Post::generateSlug($request->title);
+        $validated_data['slug'] = $slug;
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->content = $request->content;
+        // $post->img = $request->img;
        
-        $post->save();
-
-        
+        Post::create($validated_data);
         return redirect()->route('admin.posts.index')->with('message', 'Post creato con successo');
     }
 
@@ -90,6 +89,9 @@ class PostController extends Controller
     {
         $validated_data = $request->validated();
         //dd($validated_data);
+        $slug = Post::generateSlug($request->title);
+        
+        $validated_data['slug'] = $slug;
         $post->update($validated_data);
         return redirect()->route('admin.posts.index');
     }

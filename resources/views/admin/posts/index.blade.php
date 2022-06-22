@@ -8,6 +8,12 @@
         <a href="{{route('admin.posts.create')}}" class="btn btn-primary text-light">Create Post</a>
     </div>
 
+    @if (session('message'))
+    <div class="alert alert-success mt-2">
+        {{ session('message') }}
+    </div>
+    @endif
+
     <table class="table table-striped table-inverse table-responsive">
         <thead class="thead-inverse">
             <tr>
@@ -26,8 +32,8 @@
                 <td>{{$post->content}}</td>
                 <td><img width="150" src="{{$post->img}}" alt="{{$post->title}}"></td>
                 <td>
-                    <a class="btn-crud btn btn-primary text-light" href="{{route('admin.posts.show', $post->id)}}">View</a>  
-                    <a class="btn-crud btn btn-secondary text-light my-2" href="{{route('admin.posts.edit', $post->id)}}">Edit</a>
+                    <a class="btn-crud btn btn-primary text-light" href="{{route('admin.posts.show', $post->slug)}}">View</a>  
+                    <a class="btn-crud btn btn-secondary text-light my-2" href="{{route('admin.posts.edit', $post->slug)}}">Edit</a>
                 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn-crud btn btn-danger text-light" data-bs-toggle="modal" data-bs-target="#delete-post-{{$post->id}}">
