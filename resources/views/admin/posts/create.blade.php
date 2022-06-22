@@ -38,7 +38,7 @@
     </div>
     
     
-    <button type="submit" class="btn btn-danger">Add Post</button>
+    <button type="submit" class="btn btn-danger mt-2 text-light">Add Post</button>
     
     </form>
     

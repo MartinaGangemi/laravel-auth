@@ -1,6 +1,6 @@
 <template>
-    <div>
-        wip
+    <div class="container my-5">
+        <h1>Work in progress </h1>
     </div>
 </template>
 

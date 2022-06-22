@@ -10,6 +10,8 @@ window.Vue = require('vue');
 
 import App from './views/App'
 
+Vue.component('work-in-progress', require('./components/WorkInProgress.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

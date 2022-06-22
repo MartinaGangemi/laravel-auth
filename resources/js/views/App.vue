@@ -1,17 +1,19 @@
 <template>
     <div>
-        <h1>Work in progress </h1>
-        <!-- <WorkInProgress/> -->
+       
+       <work-in-progress/>
     </div>
 </template>
 
 <script>
 
-//import WorkInProgress from './components/WorkInProgress.vue'
+import WorkInProgress from '../components/WorkInProgress.vue'
+
+
 export default {
    name:'app',
    components  :{
-        // WorkInProgress
+      WorkInProgress
    
     }
 }
