@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Http\Controllers\Controller;
+
 
 class PostController extends Controller
 {
@@ -27,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
+
     }
 
     /**
@@ -36,10 +39,23 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        //dd($request->all());
+
+        $validated_data = $request->validated();
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->img = $request->img;
+       
+        $post->save();
+
+        
+        return redirect()->route('admin.posts.index')->with('message', 'Post creato con successo');
     }
+
 
     /**
      * Display the specified resource.
@@ -49,7 +65,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.posts.show',compact('post'));
     }
 
     /**
@@ -60,7 +76,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -70,9 +86,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, post $post)
     {
-        //
+        $validated_data = $request->validated();
+        //dd($validated_data);
+        $post->update($validated_data);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -83,6 +102,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index');
+       
     }
 }
